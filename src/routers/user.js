@@ -33,4 +33,16 @@ router.get('/users/me', auth, async (req, res) => {
     res.send(req.user)
 })
 
+router.post('/users/me/logout', auth, async (req, res) => {
+    const { user } = req
+
+    try {
+        user.tokens.splice(0, user.tokens.length)
+        await user.save()
+        res.send()
+    } catch (err) {
+        res.status(500).send(err)
+    }
+})
+
 module.exports = router
