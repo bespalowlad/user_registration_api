@@ -5,7 +5,7 @@ const auth = require('../middleware/auth')
 const router = express.Router()
 
 router.get('/users', (req, res) => {
-    res.status(200).send({ status: 'ok' })
+    res.status(200).send({ status: 'ok', data: '' })
 })
 
 router.post('/users', async (req, res) => {
